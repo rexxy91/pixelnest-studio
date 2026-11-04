@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f7f2" />
+    <meta
+      name="description"
+      content="Try the PixelNest website builder demo: create a responsive website preview and download the HTML."
+    />
+    <title>Try the Website Builder Demo — PixelNest Studio</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #182b36;
+        --muted: #62727a;
+        --green: #237b63;
+        --dark: #185d4b;
+        --line: #e4e9e5;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: var(--ink);
+        background: #f6f7f2;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      * { box-sizing: border-box; }
+      body { margin: 0; min-width: 320px; }
+      .shell { width: min(1120px, calc(100% - 32px)); margin: auto; }
+      header { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 1rem; }
+      header a { color: inherit; font-weight: 800; text-decoration: none; }
+      header .back { color: var(--green); }
+      main { padding-block: 35px 70px; }
+      .intro { max-width: 700px; margin: 0 auto 30px; text-align: center; }
+      .badge { display: inline-block; border: 1px solid #237b6333; border-radius: 999px; padding: 8px 12px; color: var(--dark); background: #fff; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+      h1 { margin: 17px 0 10px; font-size: clamp(38px, 7vw, 65px); line-height: 1; letter-spacing: -.07em; }
+      .intro p { color: var(--muted); line-height: 1.7; }
+      .layout { display: grid; grid-template-columns: minmax(270px, .78fr) minmax(0, 1.22fr); align-items: start; gap: 18px; }
+      .panel { min-width: 0; border: 1px solid var(--line); border-radius: 20px; padding: clamp(16px, 3vw, 24px); background: #fff; box-shadow: 0 12px 30px #182b360b; }
+      .panel h2 { margin: 0 0 8px; font-size: 20px; }
+      .note { color: var(--muted); font-size: 13px; line-height: 1.6; }
+      .field { display: grid; gap: 6px; margin: 16px 0; }
+      .field label { font-size: 13px; font-weight: 800; }
+      input, select, textarea, button { font: inherit; }
+      input, select, textarea { width: 100%; min-height: 46px; border: 1px solid #d6dfd9; border-radius: 10px; padding: 11px; color: var(--ink); background: #fff; }
+      textarea { min-height: 105px; resize: vertical; }
+      .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 20px; }
+      button { min-height: 45px; border: 0; border-radius: 11px; padding: 10px; background: var(--green); color: white; cursor: pointer; font-size: 13px; font-weight: 800; transition: transform 160ms ease, background 160ms ease; }
+      button:hover { transform: translateY(-2px); background: var(--dark); }
+      button.secondary { border: 1px solid var(--line); color: var(--ink); background: white; }
+      button.secondary:hover { background: #f6f7f2; }
+      .status { min-height: 1.4rem; margin: 12px 0 0; color: var(--dark); font-size: 13px; line-height: 1.5; }
+      .preview-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+      .preview-top h2 { margin: 0; }
+      .demo-badge { flex: 0 0 auto; border-radius: 99px; padding: 6px 9px; color: #695114; background: #fff1bd; font-size: 10px; font-weight: 900; }
+      iframe { display: block; width: 100%; height: 560px; border: 1px solid var(--line); border-radius: 13px; background: white; }
+      :focus-visible { outline: 3px solid #1e6f99; outline-offset: 3px; }
+      @media (max-width: 820px) { .layout { grid-template-columns: 1fr; } }
+      @media (max-width: 520px) { header { min-height: 66px; } main { padding-top: 24px; } iframe { height: 450px; } }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <a href="./">✳ PixelNest Studio</a>
+        <a class="back" href="./">Back to packages ↗</a>
+      </header>
+      <main>
+        <div class="intro">
+          <span class="badge">Free public demo · no login</span>
+          <h1>Build a website idea in seconds.</h1>
+          <p>Describe a business, portfolio, cafe, shop, or community. Preview a responsive design, try a new style, then download the HTML.</p>
+        </div>
+        <div class="layout">
+          <form class="panel" id="builder">
+            <h2>Your idea</h2>
+            <p class="note">This demo runs in your browser and does not send your text anywhere. It uses built-in templates and writing rules—not a connected AI model.</p>
+            <div class="field"><label for="name">Name for your website</label><input id="name" maxlength="60" value="Mango Tree Cafe" /></div>
+            <div class="field"><label for="kind">Website type</label><select id="kind"><option value="business">Small business</option><option value="cafe">Cafe or restaurant</option><option value="portfolio">Personal portfolio</option><option value="shop">Online shop</option><option value="creator">Creator or community</option><option value="other">Something else</option></select></div>
+            <div class="field"><label for="description">Describe what you do</label><textarea id="description" maxlength="240">Fresh coffee, homemade mango cake, and a cozy place to meet in Jaipur.</textarea></div>
+            <div class="field"><label for="style">Website style</label><select id="style"><option value="green">Fresh green</option><option value="blue">Ocean blue</option><option value="sunset">Warm sunset</option><option value="dark">Modern dark</option></select></div>
+            <div class="buttons"><button type="submit">Generate preview ✨</button><button class="secondary" id="download" type="button">Download HTML ↓</button></div>
+            <p class="status" id="status" role="status" aria-live="polite">Your sample website is ready.</p>
+          </form>
+          <section class="panel" aria-labelledby="preview-title">
+            <div class="preview-top"><h2 id="preview-title">Live preview</h2><span class="demo-badge">DEMO · NOT PUBLISHED</span></div>
+            <iframe id="preview" title="Generated website preview" sandbox></iframe>
+            <p class="note">Download your site to keep it. Publishing and connecting a custom domain are separate steps.</p>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script>
+      (() => {
+        const presets = {
+          business: { headline: (name) => `Good things start at ${name}`, section: "What we do", cards: ["Thoughtful service", "Made for you", "Here to help"], callToAction: "Let’s talk" },
+          cafe: { headline: (name) => `A little taste of ${name}`, section: "Made fresh, shared together", cards: ["Coffee & tea", "Fresh from our kitchen", "A cozy place to be"], callToAction: "Come say hello" },
+          portfolio: { headline: (name) => `Hello, I’m ${name}`, section: "A little about my work", cards: ["Selected projects", "What I can do", "Let’s collaborate"], callToAction: "Get in touch" },
+          shop: { headline: (name) => `Find something lovely at ${name}`, section: "A few customer favorites", cards: ["Made with care", "Easy to browse", "Ready for you"], callToAction: "Explore the collection" },
+          creator: { headline: (name) => `Welcome to ${name}`, section: "Come be part of it", cards: ["New stories", "Helpful resources", "A kind community"], callToAction: "Join the conversation" },
+          other: { headline: (name) => `Meet ${name}`, section: "A good place to begin", cards: ["Our idea", "What makes it special", "The next step"], callToAction: "Find out more" },
+        };
+        const themes = {
+          green: { page: "#f1f7ed", accent: "#246b52", ink: "#19352c", card: "#fff" },
+          blue: { page: "#edf5fa", accent: "#25627b", ink: "#193346", card: "#fff" },
+          sunset: { page: "#fff3e8", accent: "#b95137", ink: "#40291f", card: "#fff" },
+          dark: { page: "#18242b", accent: "#c5e87a", ink: "#f5f6ef", card: "#24343c" },
+        };
+        const form = document.querySelector("#builder");
+        const preview = document.querySelector("#preview");
+        const status = document.querySelector("#status");
+        let currentHtml = "";
+        const escapeHtml = (value) => value.replace(/[&<>\"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" })[character]);
+        const makeWebsite = () => {
+          const name = escapeHtml(document.querySelector("#name").value.trim() || "Your New Website");
+          const description = escapeHtml(document.querySelector("#description").value.trim() || "A new idea, ready to grow. Discover what makes us different and get in touch.");
+          const preset = presets[document.querySelector("#kind").value];
+          const theme = themes[document.querySelector("#style").value];
+          const buttonText = document.querySelector("#style").value === "dark" ? theme.ink : "#fff";
+          const cards = preset.cards.map((title, index) => `<article class="card"><span>0${index + 1}</span><h2>${title}</h2><p>${description}</p></article>`).join("");
+          return `<!doctype html>
++<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${description}"><title>${name}</title><style>
++:root{font-family:Arial,Helvetica,sans-serif;color:${theme.ink};background:${theme.page}}*{box-sizing:border-box}body{margin:0}header{display:flex;justify-content:space-between;align-items:center;padding:22px max(6vw,22px)}header a{color:inherit;text-decoration:none;font-weight:bold}header a:last-child,.cta{padding:12px 17px;border-radius:30px;background:${theme.accent};color:${buttonText}}main{max-width:1040px;margin:auto;padding:36px 6vw 64px}.hero{padding:clamp(28px,7vw,72px);border-radius:26px;background:${theme.card};box-shadow:0 18px 48px #13252a13}.label,.card span{color:${theme.accent};font-size:12px;font-weight:bold;letter-spacing:.13em;text-transform:uppercase}.hero h1{max-width:740px;margin:17px 0;font-size:clamp(38px,7vw,76px);line-height:1;letter-spacing:-.06em}.hero p,.card p,footer{max-width:620px;line-height:1.75;opacity:.76}.cta{display:inline-block;margin-top:12px;font-weight:bold;text-decoration:none}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:45px}.card{padding:22px;border:1px solid #78908030;border-radius:18px;background:${theme.card};animation:show .55s both}.card:nth-child(2){animation-delay:.1s}.card:nth-child(3){animation-delay:.2s}.card h2{margin:18px 0 8px;font-size:19px}footer{margin-top:46px}@keyframes show{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@media(max-width:650px){.cards{grid-template-columns:1fr}.hero{padding:30px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}</style></head>
++<body><header><a href="#">${name}</a><a href="#contact">${preset.callToAction}</a></header><main><section class="hero"><span class="label">${preset.section}</span><h1>${preset.headline(name)}</h1><p>${description}</p><a class="cta" href="#contact">${preset.callToAction} →</a></section><section class="cards" aria-label="${preset.section}">${cards}</section><footer id="contact"><strong>${name}</strong> · Thanks for stopping by. Get in touch to learn more.</footer></main></body></html>`.replace(/^\+/gm, "");
+        };
+        const generate = () => { currentHtml = makeWebsite(); preview.srcdoc = currentHtml; status.textContent = "Preview updated. Download the HTML to keep your demo."; };
+        form.addEventListener("submit", (event) => { event.preventDefault(); generate(); });
+        document.querySelector("#download").addEventListener("click", () => {
+          if (!currentHtml) generate();
+          const safeName = document.querySelector("#name").value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "website-demo";
+          const fileUrl = URL.createObjectURL(new Blob([currentHtml], { type: "text/html;charset=utf-8" }));
+          const link = document.createElement("a"); link.href = fileUrl; link.download = `${safeName}.html`; link.click();
+          window.setTimeout(() => URL.revokeObjectURL(fileUrl), 1000);
+          status.textContent = "Your website demo HTML was downloaded.";
+        });
+        generate();
+      })();
+    </script>
+  </body>
+</html>

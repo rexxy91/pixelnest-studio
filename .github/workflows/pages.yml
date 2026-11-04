@@ -27,6 +27,7 @@ jobs:
         run: |
           mkdir dist
           cp index.html dist/index.html
+          cp ai-builder.html dist/ai-builder.html
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
